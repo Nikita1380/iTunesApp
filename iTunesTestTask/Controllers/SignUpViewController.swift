@@ -9,6 +9,10 @@ import UIKit
 
 class SignUpViewController: UIViewController {
     
+    let nameValidType: String.ValidTypes = .name
+    let emailValidType: String.ValidTypes = .email
+    let passwordValidType: String.ValidTypes = .password
+    
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -148,6 +152,10 @@ class SignUpViewController: UIViewController {
         setConstraints()
     }
     
+    deinit {
+        removeKeyboardNotification()
+    }
+    
     private func setupViews() {
         title = "Sign Up"
         view.backgroundColor = .white
@@ -157,6 +165,69 @@ class SignUpViewController: UIViewController {
         backgroundView.addSubview(elementsStackView)
         backgroundView.addSubview(loginLabel)
         backgroundView.addSubview(signUpButton)
+    }
+    
+    private func setTextField(textField: UITextField, label: UILabel, validType: String.ValidTypes, validMessage: String, wrongMessage: String, string: String, range: NSRange) {
+        
+        let text = (textField.text ?? "") + string
+        let result: String
+        
+        if range.length == 1 {
+            let end = text.index(text.startIndex, offsetBy: text.count - 1)
+            result = String(text[text.startIndex..<end])
+        } else {
+            result = text
+        }
+        
+        textField.text = result
+        
+        if result.isValid(validType: validType) {
+            label.text = validMessage
+            label.textColor = .systemGreen
+        } else {
+            label.text = wrongMessage
+            label.textColor = .systemRed
+        }
+    }
+    
+    private func setPhoneNumberMask(textField: UITextField, mask: String, string: String, range: NSRange) -> String {
+        
+        let text = textField.text ?? ""
+        
+        let phone = (text as NSString).replacingCharacters(in: range, with: string)
+        let number = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+        var result = ""
+        var index = number.startIndex
+        
+        for charater in mask where index < number.endIndex {
+            if charater == "X" {
+                result.append(number[index])
+                index = number.index(after: index)
+            } else {
+                result.append(charater)
+            }
+        }
+        
+        if result.count == 18 {
+            phoneValidLabel.text = "Phone is valid"
+            phoneValidLabel.textColor = .systemGreen
+        } else {
+            phoneValidLabel.text = "Phone is not valid"
+            phoneValidLabel.textColor = .systemRed
+        }
+        
+        return result
+    }
+    
+    private func ageIsValid() -> Bool {
+        let calendar = NSCalendar.current
+        let dateNow = Date()
+        let birthday = datePicker.date
+        
+        let age = calendar.dateComponents([.year], from: birthday, to: dateNow)
+        let ageYear = age.year
+        guard let ageUser = ageYear else { return false }
+        return (ageUser < 18 ? false : true)
     }
     
     @objc private func signUpButtonTapped() {
@@ -170,7 +241,42 @@ extension SignUpViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        false
+        switch textField {
+        case firstNameTextField: setTextField(textField: firstNameTextField,
+                                              label: firstNameValidLabel,
+                                              validType: nameValidType,
+                                              validMessage: "Name is Valid",
+                                              wrongMessage: "Only A-Z characters, min 1 character",
+                                              string: string,
+                                              range: range)
+            
+        case secondNameTextField: setTextField(textField: secondNameTextField,
+                                              label: secondNameValidLabel,
+                                              validType: nameValidType,
+                                              validMessage: "Name is Valid",
+                                              wrongMessage: "Only A-Z characters, min 1 character",
+                                              string: string,
+                                              range: range)
+        case emailTextField: setTextField(textField: emailTextField,
+                                              label: emailValidLabel,
+                                              validType: emailValidType,
+                                              validMessage: "Name is Valid",
+                                              wrongMessage: "Email is not Valid",
+                                              string: string,
+                                              range: range)
+        case passwordTextField: setTextField(textField: passwordTextField,
+                                              label: passwordValidLabel,
+                                              validType: passwordValidType,
+                                              validMessage: "Password is Valid",
+                                              wrongMessage: "Password is not Valid",
+                                              string: string,
+                                              range: range)
+        case phoneNumberTextField: phoneNumberTextField.text = setPhoneNumberMask(textField: phoneNumberTextField, mask: "+X (XXX) XXX-XX-XX", string: string, range: range)
+        default:
+            break
+        }
+        
+        return false
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -221,5 +327,43 @@ extension SignUpViewController {
             signUpButton.heightAnchor.constraint(equalToConstant: 40),
             signUpButton.widthAnchor.constraint(equalToConstant: 200)
         ])
+    }
+}
+
+//MARK: - Keyboard Show/Hide
+
+extension SignUpViewController {
+    
+    private func registerKeyboardNotigication() {
+        
+        // - Проверяем, что клавиатура появилась
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        
+        // - Проверяем, что клавиатура скрылась
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    
+    private func removeKeyboardNotification() {
+        
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    // - Когда клавиатура будет появляться, будем вызывать этот метод
+    @objc private func keyboardWillShow(notification: Notification) {
+        let userInfo = notification.userInfo
+        let keyboardHeight = (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        scrollView.contentOffset = CGPoint(x: 0, y: keyboardHeight.height / 2)
+    }
+    
+    // - Когда клавиатура будет скрываться, будем вызывать этот метод
+    @objc private func keyboardWillHide() {
+        // - Скрываем клавиатуру по нажатию на кнопку return/done и тд
+        scrollView.contentOffset = CGPoint.zero
     }
 }

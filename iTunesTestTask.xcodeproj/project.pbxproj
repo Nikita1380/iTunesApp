@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		562CA2D02CC0EB5E0018AB69 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562CA2CF2CC0EB5E0018AB69 /* UILabel.swift */; };
+		562CA2D22CC0EE000018AB69 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562CA2D12CC0EE000018AB69 /* String.swift */; };
 		569FE06B2CBD22D6005F6FEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569FE06A2CBD22D6005F6FEB /* AppDelegate.swift */; };
 		569FE06D2CBD22D6005F6FEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569FE06C2CBD22D6005F6FEB /* SceneDelegate.swift */; };
 		569FE06F2CBD22D6005F6FEB /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569FE06E2CBD22D6005F6FEB /* AuthViewController.swift */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		562CA2CF2CC0EB5E0018AB69 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		562CA2D12CC0EE000018AB69 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		569FE0672CBD22D6005F6FEB /* iTunesTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		569FE06A2CBD22D6005F6FEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		569FE06C2CBD22D6005F6FEB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +101,7 @@
 		569FE0892CBD58A1005F6FEB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				562CA2D12CC0EE000018AB69 /* String.swift */,
 				569FE08A2CBD58AA005F6FEB /* UIKit */,
 			);
 			path = Extensions;
@@ -107,6 +112,7 @@
 			children = (
 				569FE08B2CBD58B9005F6FEB /* UIStackView.swift */,
 				569FE0902CBE8B30005F6FEB /* UIViewController.swift */,
+				562CA2CF2CC0EB5E0018AB69 /* UILabel.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -191,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				569FE06F2CBD22D6005F6FEB /* AuthViewController.swift in Sources */,
+				562CA2D22CC0EE000018AB69 /* String.swift in Sources */,
 				569FE0882CBD516D005F6FEB /* UserInfoViewController.swift in Sources */,
 				569FE0862CBD5049005F6FEB /* DetailAlbumViewController.swift in Sources */,
 				569FE08C2CBD58B9005F6FEB /* UIStackView.swift in Sources */,
@@ -200,6 +207,7 @@
 				569FE0822CBD4FFD005F6FEB /* SignUpViewController.swift in Sources */,
 				569FE06D2CBD22D6005F6FEB /* SceneDelegate.swift in Sources */,
 				569FE0842CBD5019005F6FEB /* AlbumsViewController.swift in Sources */,
+				562CA2D02CC0EB5E0018AB69 /* UILabel.swift in Sources */,
 				569FE0932CBEA1A9005F6FEB /* SongsCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

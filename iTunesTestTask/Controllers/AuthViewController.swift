@@ -85,6 +85,11 @@ class AuthViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setConstraints()
+        registerKeyboardNotigication()
+    }
+    
+    deinit {
+        removeKeyboardNotification()
     }
     
     @objc private func signInButtonTapped() {
@@ -117,6 +122,42 @@ extension AuthViewController: UITextFieldDelegate {
         emailTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
         return true
+    }
+}
+
+extension AuthViewController {
+    
+    private func registerKeyboardNotigication() {
+        
+        // - Проверяем, что клавиатура появилась
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        
+        // - Проверяем, что клавиатура скрылась
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    
+    private func removeKeyboardNotification() {
+        
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    // - Когда клавиатура будет появляться, будем вызывать этот метод
+    @objc private func keyboardWillShow(notification: Notification) {
+        let userInfo = notification.userInfo
+        let keyboardHeight = (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        scrollView.contentOffset = CGPoint(x: 0, y: keyboardHeight.height / 2)
+    }
+    
+    // - Когда клавиатура будет скрываться, будем вызывать этот метод
+    @objc private func keyboardWillHide() {
+        // - Скрываем клавиатуру по нажатию на кнопку return/done и тд
+        scrollView.contentOffset = CGPoint.zero
     }
 }
 
