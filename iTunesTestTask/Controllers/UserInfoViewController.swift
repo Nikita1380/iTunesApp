@@ -70,4 +70,19 @@ class UserInfoViewController: UIViewController {
             stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
+    
+    private func setModel() {
+        guard let activeUser = DataBase.shared.activeUser else { return }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        let dateString = dateFormatter.string(from: activeUser.age)
+        
+        firstNameLabel.text = activeUser.firstName
+        secondNameLabel.text = activeUser.secondName
+        phoneLabel.text = activeUser.phone
+        emailLabel.text = activeUser.email
+        passwordLabel.text = activeUser.password
+        ageLabel.text = dateString
+    }
 }

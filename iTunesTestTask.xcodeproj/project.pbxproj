@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		562CA2D02CC0EB5E0018AB69 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562CA2CF2CC0EB5E0018AB69 /* UILabel.swift */; };
 		562CA2D22CC0EE000018AB69 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562CA2D12CC0EE000018AB69 /* String.swift */; };
+		562CA2D52CC138B00018AB69 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562CA2D42CC138B00018AB69 /* UserDefaultsManager.swift */; };
+		562CA2D82CC13BBC0018AB69 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562CA2D72CC13BBC0018AB69 /* UserModel.swift */; };
+		562CA2DA2CC2561C0018AB69 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562CA2D92CC2561C0018AB69 /* Alert.swift */; };
 		569FE06B2CBD22D6005F6FEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569FE06A2CBD22D6005F6FEB /* AppDelegate.swift */; };
 		569FE06D2CBD22D6005F6FEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569FE06C2CBD22D6005F6FEB /* SceneDelegate.swift */; };
 		569FE06F2CBD22D6005F6FEB /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569FE06E2CBD22D6005F6FEB /* AuthViewController.swift */; };
@@ -27,6 +30,9 @@
 /* Begin PBXFileReference section */
 		562CA2CF2CC0EB5E0018AB69 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		562CA2D12CC0EE000018AB69 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		562CA2D42CC138B00018AB69 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		562CA2D72CC13BBC0018AB69 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		562CA2D92CC2561C0018AB69 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		569FE0672CBD22D6005F6FEB /* iTunesTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		569FE06A2CBD22D6005F6FEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		569FE06C2CBD22D6005F6FEB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +61,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		562CA2D32CC138940018AB69 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				562CA2D42CC138B00018AB69 /* UserDefaultsManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		562CA2D62CC13BAC0018AB69 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				562CA2D72CC13BBC0018AB69 /* UserModel.swift */,
+				562CA2D92CC2561C0018AB69 /* Alert.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		569FE05E2CBD22D6005F6FEB = {
 			isa = PBXGroup;
 			children = (
@@ -74,8 +97,10 @@
 		569FE0692CBD22D6005F6FEB /* iTunesTestTask */ = {
 			isa = PBXGroup;
 			children = (
+				562CA2D62CC13BAC0018AB69 /* Models */,
 				569FE08D2CBE6940005F6FEB /* Cells */,
 				569FE0892CBD58A1005F6FEB /* Extensions */,
+				562CA2D32CC138940018AB69 /* Services */,
 				569FE0802CBD4FE6005F6FEB /* Controllers */,
 				569FE06A2CBD22D6005F6FEB /* AppDelegate.swift */,
 				569FE06C2CBD22D6005F6FEB /* SceneDelegate.swift */,
@@ -206,8 +231,11 @@
 				569FE08F2CBE6953005F6FEB /* AlbumsTableViewCell.swift in Sources */,
 				569FE0822CBD4FFD005F6FEB /* SignUpViewController.swift in Sources */,
 				569FE06D2CBD22D6005F6FEB /* SceneDelegate.swift in Sources */,
+				562CA2D52CC138B00018AB69 /* UserDefaultsManager.swift in Sources */,
 				569FE0842CBD5019005F6FEB /* AlbumsViewController.swift in Sources */,
 				562CA2D02CC0EB5E0018AB69 /* UILabel.swift in Sources */,
+				562CA2D82CC13BBC0018AB69 /* UserModel.swift in Sources */,
+				562CA2DA2CC2561C0018AB69 /* Alert.swift in Sources */,
 				569FE0932CBEA1A9005F6FEB /* SongsCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

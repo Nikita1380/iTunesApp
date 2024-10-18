@@ -231,7 +231,24 @@ class SignUpViewController: UIViewController {
     }
     
     @objc private func signUpButtonTapped() {
+        let firstNameText = firstNameTextField.text ?? ""
+        let secondNameText = secondNameTextField.text ?? ""
+        let emailText = emailTextField.text ?? ""
+        let passwordText = passwordTextField.text ?? ""
+        let phoneText = phoneNumberTextField.text ?? ""
         
+        if firstNameText.isValid(validType: nameValidType)
+            && secondNameText.isValid(validType: nameValidType)
+            && emailText.isValid(validType: emailValidType)
+            && passwordText.isValid(validType: passwordValidType)
+            && ageIsValid() == true
+            && phoneText.count == 18 {
+            
+            DataBase.shared.saveUser(firstName: firstNameText, secondName: secondNameText, phone: phoneText, email: emailText, password: passwordText, age: datePicker.date)
+            loginLabel.text = "Registration complete"
+        } else {
+            createAlert(title: "Registration failed", message: "Проверьте корректность заполнения полей")
+        }
     }
 }
 
