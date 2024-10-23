@@ -71,8 +71,11 @@ class AlbumsViewController: UIViewController {
             if error == nil {
                 guard let albumModel = albumModel else { return }
                 
-                self?.albums = albumModel.results
-                print(self?.albums)
+                // - сравниваем названия альбома по алфавиту и выстраиваем в порядке алфавита
+                let sortedAlbums = albumModel.results.sorted { firstItem, secondItem in
+                    return firstItem.collectionName.compare(secondItem.collectionName) == ComparisonResult.orderedAscending
+                }
+                self?.albums = sortedAlbums
                 self?.tableView.reloadData()
                 
             } else {
