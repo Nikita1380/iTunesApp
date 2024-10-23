@@ -12,6 +12,9 @@
 		562CA2D52CC138B00018AB69 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562CA2D42CC138B00018AB69 /* UserDefaultsManager.swift */; };
 		562CA2D82CC13BBC0018AB69 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562CA2D72CC13BBC0018AB69 /* UserModel.swift */; };
 		562CA2DA2CC2561C0018AB69 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562CA2D92CC2561C0018AB69 /* Alert.swift */; };
+		562CA33A2CC7C1850018AB69 /* AlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562CA3392CC7C1850018AB69 /* AlbumModel.swift */; };
+		562CA33D2CC7C36D0018AB69 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562CA33C2CC7C36D0018AB69 /* NetworkRequest.swift */; };
+		562CA33F2CC7C4E20018AB69 /* NetworkDataFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562CA33E2CC7C4E20018AB69 /* NetworkDataFetch.swift */; };
 		569FE06B2CBD22D6005F6FEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569FE06A2CBD22D6005F6FEB /* AppDelegate.swift */; };
 		569FE06D2CBD22D6005F6FEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569FE06C2CBD22D6005F6FEB /* SceneDelegate.swift */; };
 		569FE06F2CBD22D6005F6FEB /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569FE06E2CBD22D6005F6FEB /* AuthViewController.swift */; };
@@ -33,6 +36,9 @@
 		562CA2D42CC138B00018AB69 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		562CA2D72CC13BBC0018AB69 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		562CA2D92CC2561C0018AB69 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		562CA3392CC7C1850018AB69 /* AlbumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumModel.swift; sourceTree = "<group>"; };
+		562CA33C2CC7C36D0018AB69 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		562CA33E2CC7C4E20018AB69 /* NetworkDataFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetch.swift; sourceTree = "<group>"; };
 		569FE0672CBD22D6005F6FEB /* iTunesTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		569FE06A2CBD22D6005F6FEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		569FE06C2CBD22D6005F6FEB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,9 +79,26 @@
 			isa = PBXGroup;
 			children = (
 				562CA2D72CC13BBC0018AB69 /* UserModel.swift */,
-				562CA2D92CC2561C0018AB69 /* Alert.swift */,
+				562CA3392CC7C1850018AB69 /* AlbumModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		562CA33B2CC7C35B0018AB69 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				562CA33C2CC7C36D0018AB69 /* NetworkRequest.swift */,
+				562CA33E2CC7C4E20018AB69 /* NetworkDataFetch.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		562CA3402CC8D8520018AB69 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				562CA2D92CC2561C0018AB69 /* Alert.swift */,
+			);
+			path = Alerts;
 			sourceTree = "<group>";
 		};
 		569FE05E2CBD22D6005F6FEB = {
@@ -97,6 +120,8 @@
 		569FE0692CBD22D6005F6FEB /* iTunesTestTask */ = {
 			isa = PBXGroup;
 			children = (
+				562CA3402CC8D8520018AB69 /* Alerts */,
+				562CA33B2CC7C35B0018AB69 /* Network */,
 				562CA2D62CC13BAC0018AB69 /* Models */,
 				569FE08D2CBE6940005F6FEB /* Cells */,
 				569FE0892CBD58A1005F6FEB /* Extensions */,
@@ -227,15 +252,18 @@
 				569FE0862CBD5049005F6FEB /* DetailAlbumViewController.swift in Sources */,
 				569FE08C2CBD58B9005F6FEB /* UIStackView.swift in Sources */,
 				569FE0912CBE8B30005F6FEB /* UIViewController.swift in Sources */,
+				562CA33F2CC7C4E20018AB69 /* NetworkDataFetch.swift in Sources */,
 				569FE06B2CBD22D6005F6FEB /* AppDelegate.swift in Sources */,
 				569FE08F2CBE6953005F6FEB /* AlbumsTableViewCell.swift in Sources */,
 				569FE0822CBD4FFD005F6FEB /* SignUpViewController.swift in Sources */,
 				569FE06D2CBD22D6005F6FEB /* SceneDelegate.swift in Sources */,
 				562CA2D52CC138B00018AB69 /* UserDefaultsManager.swift in Sources */,
 				569FE0842CBD5019005F6FEB /* AlbumsViewController.swift in Sources */,
+				562CA33A2CC7C1850018AB69 /* AlbumModel.swift in Sources */,
 				562CA2D02CC0EB5E0018AB69 /* UILabel.swift in Sources */,
 				562CA2D82CC13BBC0018AB69 /* UserModel.swift in Sources */,
 				562CA2DA2CC2561C0018AB69 /* Alert.swift in Sources */,
+				562CA33D2CC7C36D0018AB69 /* NetworkRequest.swift in Sources */,
 				569FE0932CBEA1A9005F6FEB /* SongsCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
